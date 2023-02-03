@@ -88,3 +88,12 @@ function EditUser() {
 }
 
 export default EditUser
+
+// issues:
+// updating data not displaying to userData(table)
+// due to not being able to access the table from
+// parent to child component.
+
+// functionalities:
+// - user data is fetch based on user API url
+// - alert displaying based on onClick event

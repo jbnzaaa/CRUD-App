@@ -1,9 +1,6 @@
 // react library and hooks
-// useEffect - used to perform API
-// useState - when requesting data, we must prepare a state in which the data will be stored when it is returned
 import React, { useEffect, useState } from 'react'
 import { useNavigate, NavLink as Link } from 'react-router-dom';
-import AddUser from '../components/AddUser';
 
 function Users() {
   const [userData, setUserData] = useState([]);
@@ -13,10 +10,10 @@ function Users() {
     getUser();
   }, []);
 
-  const getUser = async() => {
+  const getUser = () => {
     // const url = ['https://reqres.in/api/users?page=1', 'https://reqres.in/api/users?page=2'];
 
-    await fetch('https://reqres.in/api/users?page=1')
+    fetch('https://reqres.in/api/users?page=1')
     .then((response) => response.json())
     .then((data) => {
       setUserData(data.data);

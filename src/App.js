@@ -27,3 +27,7 @@ function App() {
 }
 
 export default App
+
+// functionalities:
+// - directories '/' and '/users'
+// - opening modal based on directories and user id

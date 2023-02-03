@@ -3,30 +3,17 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function AddUser() {
-  const [user, setUser] = useState([]);
   const [first_name, setFirstname] = useState('');
   const [last_name, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [creating, setCreating] = useState(false);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   fetch('https://reqres.in/api/users?page=1')
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     setNewUser(data.data);
-  //   })
-  //   .catch((err) => console.log(err.message));
-  // }, [])
-
-  const handleSubmit = async(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
     setCreating(true);
-    
-    // const userInputs = {first_name, last_name, email};
 
-    await fetch('https://reqres.in/api/users?page=1', {
+    fetch('https://reqres.in/api/users?page=1', {
       method: 'POST',
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({
@@ -38,19 +25,14 @@ function AddUser() {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);  
       // setUserData((userData) => [data, ...userData]);
-      // navigate('/users');
       setFirstname('');
       setLastname('');
       setEmail('');
+      navigate('/users');
     })
     .catch((err) => console.log(err.message))
   }
-
-  // const test = () => {
-  //   setNewUser('first_name, last_name, email')
-  // }
 
   const handleCancel = () => {
     navigate('/users');
@@ -63,13 +45,6 @@ function AddUser() {
           <h3>Edit User</h3>
           {creating && <span className='alert alert-info'>Creating new user</span>}
         </div>
-        {/* {newUser.map((user, index) => {
-          return (
-            <div key={index}>
-              <p>{user.email}</p> 
-            </div>
-          )
-        })} */}
         <div className="modalBody">
           <form onSubmit={handleSubmit}>
             <span>First Name</span>
@@ -93,3 +68,12 @@ function AddUser() {
 }
 
 export default AddUser
+
+// issues:
+// created data not displaying to userData(table)
+// due to not being able to access the table from
+// parent to child component.
+
+// functionalities:
+// - POST request method working
+// - alert displaying based on onClick event

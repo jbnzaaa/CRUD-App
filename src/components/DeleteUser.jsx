@@ -1,9 +1,10 @@
 // react library
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useAsyncError, useNavigate, useParams } from 'react-router-dom';
 
 function DeleteUser() {
   const {id} = useParams();
+  const [test, setTest] = useState([]);
   const [selected, setSelected] = useState({
     id: '',
     avatar: '',
@@ -21,28 +22,27 @@ function DeleteUser() {
     .catch((err) => console.log(err.message))
   }, [id])
 
-  const handleDelete = (e) => {
-    e.preventDefault();
-
+  const handleDelete = () => {
     setDeleting(true);
-    
+
     fetch(`https://reqres.in/api/users/${id}`, {
       method: 'DELETE'
     })
-    .then((response) => {
-      console.log(response);
-
-      // if(response.status === 200){
-      //   setUserData(
-      //     userData.filter((usser) => {
-      //       return usser.id !== id;
-      //     })  
-      //   )
-      // } else{
-      //   return;
-      // }
-
-      // navigate('/users')
+    // .then((response) => {
+    //   if(response.status === 200){
+    //     setSelected((user) => {
+    //       return user.id !== id;
+    //     })  
+    //   } else{
+    //     return;
+    //   }
+    //   navigate('/users')
+    // })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err.message);
     })
   }
 
@@ -58,26 +58,26 @@ function DeleteUser() {
           {deleting && <span className='alert alert-danger'>Deleting user</span>}
         </div>
         <div className="modalBody">
-          <form onSubmit={handleDelete}>
+          <div>
             <img src={selected.avatar} alt="avatar" />
 
             <span>ID</span>
             <input type="text" name="id" value={selected.id} disabled/>
 
             <span>First Name</span>
-            <input type="text" name='firstname' value={selected.first_name} disabled />
+            <input type="text" name='firstname' defaultValue={selected.first_name} disabled />
 
             <span>Last Name</span>
-            <input type="text" name='lastname' value={selected.last_name} disabled />
+            <input type="text" name='lastname' defaultValue={selected.last_name} disabled />
 
             <span>Email</span>
-            <input type="text" name='email' value={selected.email} disabled />
+            <input type="text" name='email' defaultValue={selected.email} disabled />
 
             <div className="actionBtn">
-              <input type="submit" value="Delete User" id='deleteBtn'/>
+              <input type="submit" value="Delete User" id='deleteBtn' onClick={() => handleDelete(selected.id)}/>
               <input type="button" value="Cancel" id='cancelBtn' onClick={() => handleCancel()}/>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -85,3 +85,12 @@ function DeleteUser() {
 }
 
 export default DeleteUser
+
+// issues:
+// deleting data not displaying to userData(table)
+// due to not being able to access the table from
+// parent to child component.
+
+// functionalities:
+// - user data is fetch based on user API url
+// - alert displaying based on onClick event
