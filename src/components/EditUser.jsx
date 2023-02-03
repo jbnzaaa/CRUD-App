@@ -40,8 +40,7 @@ function EditUser() {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      // navigate('/users');
+      navigate('/users');
     })
     .catch((err) => {
       console.log(err.message);

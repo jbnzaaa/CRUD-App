@@ -36,10 +36,9 @@ function DeleteUser() {
     //   } else{
     //     return;
     //   }
-    //   navigate('/users')
     // })
     .then((data) => {
-      console.log(data);
+      navigate('/users');
     })
     .catch((err) => {
       console.log(err.message);
