@@ -1,0 +1,279 @@
+:root {
+  --bg-white: #F7F9F7;
+  --bg-white-w: #FFFFFF;
+  --txt-color-b: #17171C;
+  --txt-color-w: #F7F9F7;
+  --primary: #0d6efd;
+  --primary-hover: #0a58ca;
+  --danger: #dc3545;
+  --danger-hover: #b02a37;
+  --success: #146c43;
+  --success-hover: #0f5132;
+  --info: #D9DADD;
+  --info-hover: #D0D0D2;
+  --alert-info: #cce5ff;
+  --alert-danger: #f8d7da;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: var(--txt-color-b);
+}
+
+body {
+  background: var(--bg-white);
+  position: relative;
+}
+
+body .navBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 5vh;
+  margin: 20px 50px;
+}
+
+body .navBar h1 {
+  font-size: 1rem;
+}
+
+body .navBar div {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .navBar div .links {
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+body .navBar div .links:hover {
+  background: var(--info);
+  border-radius: 10px;
+}
+
+body .homePage {
+  height: auto;
+  margin-top: 50px;
+  padding: 20px;
+  margin: 20px 50px;
+}
+
+body .homePage h1 {
+  font-size: 3.3rem;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+body .homePage span {
+  background: var(--primary);
+  color: var(--txt-color-w);
+  padding: 13px 30px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+body .userList {
+  height: auto;
+  margin-top: 50px;
+  padding: 20px;
+  margin: 20px 50px;
+}
+
+body .userList .addUserBtn {
+  background: var(--primary);
+  border: none;
+  padding: 10px 30px;
+  color: var(--txt-color-w);
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+}
+
+body .userList .addUserBtn:hover {
+  background: var(--primary-hover);
+  cursor: pointer;
+}
+
+body .userList .userListTable {
+  width: 100%;
+  text-align: left;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+body .userList .userListTable th, body .userList .userListTable td {
+  padding: 10px;
+}
+
+body .userList .userListTable th img, body .userList .userListTable td img {
+  margin-bottom: 20px;
+  width: 80px;
+  border-radius: 15px;
+}
+
+body .userList .userListTable th #editBtn,
+body .userList .userListTable th #deleteBtn, body .userList .userListTable td #editBtn,
+body .userList .userListTable td #deleteBtn {
+  padding: 10px 20px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+body .userList .userListTable th #editBtn, body .userList .userListTable td #editBtn {
+  background: var(--info);
+}
+
+body .userList .userListTable th #editBtn:hover, body .userList .userListTable td #editBtn:hover {
+  background: var(--info-hover);
+  cursor: pointer;
+}
+
+body .userList .userListTable th #deleteBtn, body .userList .userListTable td #deleteBtn {
+  background: var(--danger);
+  color: var(--txt-color-w);
+}
+
+body .userList .userListTable th #deleteBtn:hover, body .userList .userListTable td #deleteBtn:hover {
+  background: var(--danger-hover);
+  cursor: pointer;
+}
+
+body .modalContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+body .modalContainer .createUserModal {
+  background: var(--bg-white-w);
+  width: 500px;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+body .modalContainer .createUserModal .modalHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+  height: 40px;
+}
+
+body .modalContainer .createUserModal .modalHeader h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+body .modalContainer .createUserModal .modalHeader .alert {
+  border-radius: 5px;
+  padding: 8px 20px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+body .modalContainer .createUserModal .modalHeader .alert-info {
+  background: var(--alert-info);
+}
+
+body .modalContainer .createUserModal .modalHeader .alert-danger {
+  background: var(--alert-danger);
+}
+
+body .modalContainer .createUserModal .modalBody form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .modalContainer .createUserModal .modalBody form img {
+  margin-bottom: 20px;
+  width: 100px;
+  border-radius: 15px;
+}
+
+body .modalContainer .createUserModal .modalBody form span {
+  font-size: .5rem;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+body .modalContainer .createUserModal .modalBody form input[type='text'] {
+  border: 1px solid var(--info-hover);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+body .modalContainer .createUserModal .modalBody form .actionBtn {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .modalContainer .createUserModal .modalBody form .actionBtn #createBtn,
+body .modalContainer .createUserModal .modalBody form .actionBtn #updateBtn {
+  background: var(--primary);
+  color: var(--txt-color-w);
+}
+
+body .modalContainer .createUserModal .modalBody form .actionBtn #deleteBtn {
+  background: var(--danger);
+  color: var(--txt-color-w);
+}
+
+body .modalContainer .createUserModal .modalBody form .actionBtn input[type='submit'],
+body .modalContainer .createUserModal .modalBody form .actionBtn input[type='button'] {
+  margin-top: 10px;
+  padding: 13px 23px;
+  border: none;
+  border-radius: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+body .modalContainer .createUserModal .modalBody form .actionBtn input[type='submit']:hover,
+body .modalContainer .createUserModal .modalBody form .actionBtn input[type='button']:hover {
+  background: var(--info-hover);
+  cursor: pointer;
+}
+/*# sourceMappingURL=main.css.map */
