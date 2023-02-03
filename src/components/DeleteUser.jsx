@@ -29,8 +29,11 @@ function DeleteUser() {
     fetch(`https://reqres.in/api/users/${id}`, {
       method: 'DELETE'
     })
-    .then((data) => {
-      console.log(data)
+    .then((response) => {
+      
+      if(response.status === 200){
+        return id !== id;
+      }
 
       // if(response.status === 200){
       //   setUserData(
