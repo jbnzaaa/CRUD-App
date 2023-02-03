@@ -30,10 +30,7 @@ function DeleteUser() {
       method: 'DELETE'
     })
     .then((response) => {
-      
-      if(response.status === 200){
-        return id !== id;
-      }
+      console.log(response);
 
       // if(response.status === 200){
       //   setUserData(
